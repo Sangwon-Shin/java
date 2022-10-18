@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="DirectorySelectionPage.lastParent_http://192.168.0.131:81/repo/java" value=""/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Revision" value="111"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Date" value="277"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Author" value="222"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Comment" value="553"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="http://192.168.0.131:81/repo/java"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>

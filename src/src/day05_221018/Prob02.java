@@ -19,12 +19,14 @@ public class Prob02 {
 			System.out.println("알파벳 한 글자를 입력하세요. qq를 입력하면 종료됩니다.");
 			String str = sc.next();
 			
-			char ch = str.charAt(0);
-			char ch2 = ch;
 			if(str.equals("qq")) {
 				sc.close();
 				break;
 			}
+			
+			char ch = str.charAt(0);
+			char ch2 = ch;
+			
 			if( ch < 'A' || ('Z' < ch && ch < 'a') || 'z' < ch) {
 				System.out.println("알파벳이 아닙니다.");
 				break;

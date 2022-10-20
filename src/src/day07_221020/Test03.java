@@ -1,4 +1,4 @@
-package day07;
+package day07_221020;
 
 import java.util.*;
 public class Test03 {

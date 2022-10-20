@@ -1,4 +1,4 @@
-package day07;
+package day07_221020;
 
 /*
 	잘못된 switch ~ case 사용 예

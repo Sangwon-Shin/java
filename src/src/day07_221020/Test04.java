@@ -1,4 +1,4 @@
-package day07;
+package day07_221020;
 
 public class Test04 {
 
@@ -10,7 +10,7 @@ public class Test04 {
 		// 곱 변수(카운터변수)
 		int gop = 1;
 		do {
-			System.out.println(dan + " x " + gop + " = " + (dan * gop));
+			System.out.println(dan + " \u00d7 " + gop + " = " + (dan * gop));
 			gop++; // 카운터변수 증가..
 		} while(gop < 10);
 	}

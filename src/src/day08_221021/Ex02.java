@@ -69,10 +69,10 @@ public class Ex02 {
 
 		for (int i = 0; i < obj.length; i++) {
 			if (obj[idx[i]] instanceof Won) {
-				System.out.printf("obj[%d]의 클래스는 Won 이고,\n 반지름은 %d, 둘레는 %f, 넓이는 %f 이다.\n\n", idx[i],
+				System.out.printf("obj[%d]의 클래스는 Won 이고,\n 반지름은 %d, 둘레는 %7.2f, 넓이는 %7.2f 이다.\n\n", idx[i],
 						((Won) obj[idx[i]]).rad, ((Won) obj[idx[i]]).circ, ((Won) obj[idx[i]]).area);
 			} else if (obj[idx[i]] instanceof Semo) {
-				System.out.printf("obj[%d]의 클래스는 Semo 이고,\n 밑변은 %d, 높이는 %d, 넓이는 %f 이다.\n\n", idx[i],
+				System.out.printf("obj[%d]의 클래스는 Semo 이고,\n 밑변은 %d, 높이는 %d, 넓이는 %7.2f 이다.\n\n", idx[i],
 						((Semo) obj[idx[i]]).width, ((Semo) obj[idx[i]]).height, ((Semo) obj[idx[i]]).area);
 			} else {
 				System.out.printf("obj[%d]의 클래스는 Nemo 이고,\n 밑변은 %d, 높이는 %d, 둘레는 %d, 넓이는 %d 이다.\n\n", idx[i],

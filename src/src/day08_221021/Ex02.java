@@ -16,14 +16,12 @@ public class Ex02 {
 				((Won) obj[i]).rad = (int) (Math.random() * 16 + 5);
 				((Won) obj[i]).setArea();
 				((Won) obj[i]).setCirc();
-				//System.out.printf("i: %d,\tarea:%f\n", i, ((Won) obj[i]).area);
 				break;
 			case 1:
 				obj[i] = new Semo();
 				((Semo) obj[i]).width = (int) (Math.random() * 16 + 5);
 				((Semo) obj[i]).height = (int) (Math.random() * 16 + 5);
 				((Semo) obj[i]).setArea();
-				//System.out.printf("i: %d,\tarea:%f\n", i, ((Semo) obj[i]).area);
 				break;
 			case 2:
 				obj[i] = new Nemo();
@@ -31,7 +29,6 @@ public class Ex02 {
 				((Nemo) obj[i]).height = (int) (Math.random() * 16 + 5);
 				((Nemo) obj[i]).setArea();
 				((Nemo) obj[i]).setAround();
-				//System.out.printf("i: %d,\tarea:%d\n", i, ((Nemo) obj[i]).area);
 				break;
 			}
 		}
@@ -39,8 +36,8 @@ public class Ex02 {
 		for (int i = 0; i < obj.length; i++) {
 			idx[i] = i;
 		}
-		double area1, area2;
 		
+		double area1, area2;
 		for (int i = 0; i < obj.length - 1; i++) {
 			for (int j = i + 1; j < obj.length; j++) {
 				if (obj[idx[i]] instanceof Won) {
@@ -57,7 +54,6 @@ public class Ex02 {
 				} else {
 					area2 = (double) ((Nemo) obj[idx[j]]).area;
 				}
-				// System.out.printf("%f, %f\n", area1, area2);
 				if (area1 > area2) {
 					int tmp;
 					tmp = idx[i];

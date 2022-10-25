@@ -18,12 +18,12 @@ public class Test05 {
 		for(int i = 0; i < 5; i++ ) {
 			circle[i] = new Won();
 			circle[i].rad = (int)(Math.random() * 16 + 5);
-			circle[i].setCirc();
+			circle[i].setAround();
 			circle[i].setArea();
 		}
 		for(Won c : circle) {
 			System.out.println("반지름: " + c.rad);
-			System.out.println("둘레: " + c.circ);
+			System.out.println("둘레: " + c.around);
 			System.out.println("넓이: " + c.area);
 		}
 		}

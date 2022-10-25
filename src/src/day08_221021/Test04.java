@@ -15,10 +15,10 @@ public class Test04 {
 		
 		Won w1 = new Won();
 		w1.rad = (int)(Math.random() * 16 + 5);
-		w1.setCirc();
+		w1.setAround();
 		w1.setArea();
 		System.out.println("반지름: " + w1.rad);
-		System.out.println("원의 둘레: " + w1.circ);
+		System.out.println("원의 둘레: " + w1.around);
 		System.out.println("원의 넓이: " + w1.area);
 		
 	}

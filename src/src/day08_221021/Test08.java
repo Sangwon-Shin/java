@@ -11,7 +11,7 @@ public class Test08 {
 			circ[i] = new Won();
 			circ[i].rad = (int)(Math.random() * 16 + 5);
 			circ[i].setArea();
-			circ[i].setCirc();
+			circ[i].setAround();
 		}
 		
 		for(int i = 0; i < circ.length - 1; i++) {
@@ -27,7 +27,7 @@ public class Test08 {
 		}
 		
 		for(Won w : circ) {
-			System.out.printf("반지름 %d 인 원의 둘레는 %f, 넓이는 %f 이다.\n\n", w.rad, w.circ, w.area);
+			System.out.printf("반지름 %d 인 원의 둘레는 %f, 넓이는 %f 이다.\n\n", w.rad, w.around, w.area);
 		}
 	}
 

@@ -15,7 +15,7 @@ public class Ex02 {
 				obj[i] = new Won();
 				((Won) obj[i]).rad = (int) (Math.random() * 16 + 5);
 				((Won) obj[i]).setArea();
-				((Won) obj[i]).setCirc();
+				((Won) obj[i]).setAround();
 				break;
 			case 1:
 				obj[i] = new Semo();
@@ -66,7 +66,7 @@ public class Ex02 {
 		for (int i = 0; i < obj.length; i++) {
 			if (obj[idx[i]] instanceof Won) {
 				System.out.printf("obj[%d]의 클래스는 Won 이고,\n 반지름은 %d, 둘레는 %7.2f, 넓이는 %7.2f 이다.\n\n", idx[i],
-						((Won) obj[idx[i]]).rad, ((Won) obj[idx[i]]).circ, ((Won) obj[idx[i]]).area);
+						((Won) obj[idx[i]]).rad, ((Won) obj[idx[i]]).around, ((Won) obj[idx[i]]).area);
 			} else if (obj[idx[i]] instanceof Semo) {
 				System.out.printf("obj[%d]의 클래스는 Semo 이고,\n 밑변은 %d, 높이는 %d, 넓이는 %7.2f 이다.\n\n", idx[i],
 						((Semo) obj[idx[i]]).width, ((Semo) obj[idx[i]]).height, ((Semo) obj[idx[i]]).area);

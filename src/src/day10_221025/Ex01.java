@@ -10,29 +10,29 @@ public class Ex01 {
 			System.out.println("↓↓↓↓↓ " + (i+1) + " ↓↓↓↓↓");
 			switch (rnum) {
 			case 0:
-				Won fig1 = new Won(); 
-				figs[i] = fig1;
-				fig1.rad = (int) (Math.random() * 16 + 5);
-				fig1.setAround();
-				fig1.setArea();
-				fig1.toPrint();
+				Won won = new Won(); 
+				figs[i] = won;
+				won.rad = (int) (Math.random() * 16 + 5);
+				won.setAround();
+				won.setArea();
+				won.toPrint();
 				break;
 			case 1:
-				Semo fig2 = new Semo();
-				figs[i] = fig2;
-				fig2.width = (int) (Math.random() * 16 + 5);
-				fig2.height = (int) (Math.random() * 16 + 5);
-				fig2.setArea();
-				fig2.toPrint();
+				Semo semo = new Semo();
+				figs[i] = semo;
+				semo.width = (int) (Math.random() * 16 + 5);
+				semo.height = (int) (Math.random() * 16 + 5);
+				semo.setArea();
+				semo.toPrint();
 				break;
 			case 2:
-				Nemo fig3 = new Nemo();
-				figs[i] = fig3;
-				fig3.width = (int) (Math.random() * 16 + 5);
-				fig3.height = (int) (Math.random() * 16 + 5);
-				fig3.setAround();
-				fig3.setArea();
-				fig3.toPrint();
+				Nemo nemo = new Nemo();
+				figs[i] = nemo;
+				nemo.width = (int) (Math.random() * 16 + 5);
+				nemo.height = (int) (Math.random() * 16 + 5);
+				nemo.setAround();
+				nemo.setArea();
+				nemo.toPrint();
 				break;
 			}
 			System.out.println();

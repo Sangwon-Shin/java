@@ -2,7 +2,7 @@ package day11_221026;
 
 public class Ex03 {
 
-	public Ex03() {
+	public Ex03() { 
 		// 학생 10명을 기억할 배열
 		int arrLen = 10;
 		int nSubj = 3;

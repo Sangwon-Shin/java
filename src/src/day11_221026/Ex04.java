@@ -10,7 +10,7 @@ package day11_221026;
 import java.util.*;
 
 public class Ex04 {
-
+ 
 	public Ex04() {
 		String[] eqn = new String[4];
 		Scanner sc = new Scanner(System.in);

@@ -12,7 +12,7 @@ public class Test03 {
 			System.out.print(pink + ", ");
 		}
 		System.out.println();
-		
+		 
 		names[0] = "jennie";
 		for (String s : names) {
 			System.out.print(s + ", ");

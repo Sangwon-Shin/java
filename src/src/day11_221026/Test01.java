@@ -12,6 +12,8 @@ public class Test01 {
 				tmp[i] = new Student();
 			}
 			stud = tmp;
+			
+			
 		}
 	}
 

@@ -62,7 +62,7 @@ public class Ex03 {
 				arrEqn[2] = eqn.substring(i + 1);
 				if (Double.parseDouble(arrEqn[2]) == 0.) {
 					System.out.println("0으로 나눌 수 없습니다.");
-					break ff;
+					return;
 				}
 				arrEqn[3] = Double.parseDouble(arrEqn[0]) / Double.parseDouble(arrEqn[2]) + "";
 				break ff;

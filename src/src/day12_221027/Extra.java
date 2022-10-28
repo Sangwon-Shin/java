@@ -33,7 +33,7 @@ public class Extra {
 
 			}
 		}
-
+		System.out.println();
 		// 학생별 총점
 		for (int i = 0; i < noc; i++) {
 			for (int j = 0; j < score[i].length; j++) {

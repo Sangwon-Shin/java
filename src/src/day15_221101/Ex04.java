@@ -5,9 +5,6 @@
  		배열에 5개의 글을 담아서 출력해보세요.
  */
 
-
-
-
 package day15_221101;
 
 import java.sql.Date;

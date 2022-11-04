@@ -4,12 +4,14 @@
  */
 
 package day18_221104;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
 public class Ex01 {
 
 	public Ex01() {
-		StringBuffer buff = new StringBuffer("name="); 
+		StringBuffer buff = new StringBuffer("name=");
 		buff.append("jennie");
 		buff.append("&id=jennie");
 		buff.append("&pw=12345");
@@ -18,14 +20,17 @@ public class Ex01 {
 		StringTokenizer token = new StringTokenizer(param, "&");
 		int len1 = token.countTokens();
 		ArrayList arrl = new ArrayList();
-		
-		for(int i = 0; i < len1; i++) {
-			StringTokenizer tkn = new StringTokenizer(, "=");
-			int len2 = tkn.countTokens();
-			for(int j = 0; j < len2; j++) {
-				ArrayList arr = new ArrayList();
+		while (token.hasMoreTokens()) {
+			String subParam = token.nextToken();
+			StringTokenizer tkn = new StringTokenizer(subParam, "=");
+			ArrayList subArr = new ArrayList();
+			while (tkn.hasMoreTokens()) {
+				subArr.add(tkn.nextToken());
 			}
-			
+			arrl.add(subArr);
+		}
+		for (Object obj : arrl) {
+			System.out.println(obj.toString());
 		}
 	}
 

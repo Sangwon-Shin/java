@@ -1,4 +1,4 @@
-package db;
+package class15B.db;
 import java.sql.*;
 public class SmartJDBC {
 

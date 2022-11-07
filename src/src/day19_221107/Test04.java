@@ -61,7 +61,7 @@ public class Test04 {
 
 // 내림차순 정렬해주는 클래스
 class AlignDesc implements Comparator {
-	int subj = 4;
+	int subj = 4;	// 비교하려는 점수 혹은 이름 코드
 	public AlignDesc() {}
 	public AlignDesc(String subj){
 		switch(subj.toLowerCase()) {

@@ -42,13 +42,13 @@ public class Ex01 {
 	}
 	
 	public void nemoPrint(Nemo nemo) {
-		System.out.printf("가로: %3d | 세로: %3d | 넓이: %5.0f\n",
+		System.out.printf("가로: %3d | 세로: %3d | 넓이: %3.0f\n",
 				nemo.getGaro(), nemo.getSero(), nemo.getArea());
 	}
 }
 
 class NemoAsc implements Comparator{
-	private int para = 3;
+	private int para = 3;	// 비교하려는 길이 혹은 넓이 코드
 	public NemoAsc() {}
 	public NemoAsc(String para) {
 		switch(para.toLowerCase()) {
@@ -86,7 +86,7 @@ class NemoAsc implements Comparator{
 }
 
 class NemoDesc implements Comparator{
-	private int para = 3;
+	private int para = 3;	// 비교하려는 길이 혹은 넓이 코드
 	public NemoDesc() {}
 	public NemoDesc(String para) {
 		switch(para.toLowerCase()) {

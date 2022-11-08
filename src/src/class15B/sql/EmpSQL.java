@@ -5,12 +5,14 @@ public class EmpSQL {
 	public final int SEL_NAME_INFO			=		1002;
 	public final int SEL_DNO_LIST			=		1003;
 	public final int SEL_DNO_MEMBER_LIST	=		1004;
+	public final int SEL_NAME_LESS_INFO		=		1005;
 	
 	public final int EDIT_ENO_SAL			=		2001;
 	
 	public final int ADD_EMP				=		3001;
 	
 	//public final int DEL_EMP				=		4001;
+	
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -69,7 +71,16 @@ public class EmpSQL {
 			buff.append("WHERE ");
 			buff.append("	ename = ? ");
 			break;
+		case SEL_NAME_LESS_INFO:
+			buff.append("SELECT ");
+			buff.append("	empno mno, ename name, sal, hiredate hdate, deptno dno ");
+			buff.append("FROM ");
+			buff.append("	emp1 ");
+			buff.append("WHERE ");
+			buff.append("	ename = ? ");
+			break;
 		}
+		
 		
 		// 쿼리 반환
 		return buff.toString();

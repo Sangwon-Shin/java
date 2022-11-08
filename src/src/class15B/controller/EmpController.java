@@ -25,12 +25,13 @@ public class EmpController {
 
 	public void mainWin() {
 		while (bool) {
-			String sno = JOptionPane.showInputDialog("1. 사원이름으로 조회"
-					+ "\n2. 부서번호로 부서원 정보 조회"
-					+ "\n3. 사원 정보 입력"
-					+ "\n4. 사원 급여 수정"
-					+ "\n# 번호를 입력하세요"
-					+ "\n종료하려면 q를 입력하세요");
+			String sno = JOptionPane.showInputDialog("1. 사원이름으로 조회" 
+						+ "\n2. 부서번호로 부서원 정보 조회" 
+						+ "\n3. 사원 정보 입력"
+						+ "\n4. 사원 급여 수정" 
+						+ "\n5. 사원이름으로 간단 정보 조회"
+						+ "\n# 번호를 입력하세요" 
+						+ "\n종료하려면 q를 입력하세요");
 			if (sno.equals("q")) {
 				break;
 			}
@@ -41,7 +42,8 @@ public class EmpController {
 					printNameList();
 					System.out.println();
 					// 조회할 사원이름 입력받고
-					String name = JOptionPane.showInputDialog("조회할 사원이름\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요").toLowerCase();
+					String name = JOptionPane.showInputDialog("조회할 사원이름\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
+							.toLowerCase();
 					if (name.equals("up")) {
 						break;
 					} else if (name.equals("q")) {
@@ -61,22 +63,40 @@ public class EmpController {
 			case "4":
 				editNameSal();
 				break;
+			case "5":
+				while (true) {
+					// 회원 이름 리스트 조회
+					printNameList();
+					System.out.println();
+					// 조회할 사원이름 입력받고
+					String name = JOptionPane.showInputDialog("조회할 사원이름\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
+							.toLowerCase();
+					if (name.equals("up")) {
+						break;
+					} else if (name.equals("q")) {
+						bool = false;
+						break;
+					}
+					// 이름으로 사원정보 조회
+					printNameLessInfo(name);
+				}
+				break;
 			}
 		}
 	}
-	
+
 	// 급여 수정
 	public void editNameSal() {
 		String name = JOptionPane.showInputDialog("이름입력");
 		int sal = Integer.parseInt(JOptionPane.showInputDialog("수정급여"));
 		int cnt = eDao.editNameSal(name, sal);
-		if(cnt == 0) {
+		if (cnt == 0) {
 			JOptionPane.showMessageDialog(null, "급여 수정에 실패했습니다");
 		} else {
 			JOptionPane.showMessageDialog(null, cnt + "명의 급여를 수정했습니다.");
 		}
 	}
-	
+
 	// 부서번호 리스트를 출력해주고 부서번호를 입력받아서
 	// 부서원 리스트를 보여주는 기능
 	public void getDnoMemberList() {
@@ -113,7 +133,7 @@ public class EmpController {
 
 	// 사원이름을 입력받아서 사원의 정보를 출력해주는 함수
 	public void printNameInfo(String name) {
-		EmpVO eVO = eDao.getNameInfo(name);
+		EmpVO eVO = eDao.getNameInfo(name.toUpperCase());
 		String ename = eVO.getName();
 		int mno = eVO.getMno();
 		String job = eVO.getJob();
@@ -134,6 +154,21 @@ public class EmpController {
 		System.out.println("부서이름: " + dname);
 		System.out.println("입사일: " + sdate);
 	}
+	// HW 사원이름을 입력받아서 사원번호, 사원이름, 급여, 입사일, 부서번호를 출력하는 함수
+	public void printNameLessInfo(String name) {
+		EmpVO eVO = eDao.getNameLessInfo(name.toUpperCase());
+		int mno = eVO.getMno();
+		String ename = eVO.getName();
+		int sal = eVO.getSal();
+		String sdate = eVO.getSdate();
+		int dno = eVO.getDno();
+
+		System.out.println("사원번호: " + mno);
+		System.out.println("사원이름: " + ename);
+		System.out.println("급    여: " + sal);
+		System.out.println("입 사 일: " + sdate);
+		System.out.println("부서번호: " + dno);
+	}
 
 	// 사원이름 리스트 조회해서 출력해주는 함수
 	public void printNameList() {
@@ -144,7 +179,7 @@ public class EmpController {
 		}
 		System.out.println();
 	}
-	
+
 	// 사원 추가 함수
 	public void addEmp() {
 		EmpVO eVO = new EmpVO();
@@ -154,35 +189,33 @@ public class EmpController {
 		eVO.setSal(500);
 		eVO.setComm(-500);
 		eVO.setMail("wooyoung@githrd.com");
-		
+
 		int cnt = eDao.addEmp(eVO);
-		if(cnt == 1) {
+		if (cnt == 1) {
 			JOptionPane.showMessageDialog(null, eVO.getName() + " 이 입사했습니다.");
-		}
-		else {
+		} else {
 			JOptionPane.showMessageDialog(null, eVO.getName() + " 의 입사가 취소되었습니다.");
 		}
 	}
-	
+
 	// 사원 추가 함수 오버로딩
-		public void addEmp(String name, String job, String sname
-				, int sal, int comm) {
-			EmpVO eVO = new EmpVO();
-			eVO.setName(name);
-			eVO.setJob(job);
-			eVO.setSname(sname);
-			eVO.setSal(sal);
-			eVO.setComm(comm);
-			eVO.setMail(name + "@githrd.com");
-			
-			int cnt = eDao.addEmp(eVO);
-			if(cnt == 1) {
-				JOptionPane.showMessageDialog(null, eVO.getName() + " 이 입사했습니다.");
-			}
-			else {
-				JOptionPane.showMessageDialog(null, eVO.getName() + " 의 입사가 취소되었습니다.");
-			}
+	public void addEmp(String name, String job, String sname, int sal, int comm) {
+		EmpVO eVO = new EmpVO();
+		eVO.setName(name);
+		eVO.setJob(job);
+		eVO.setSname(sname);
+		eVO.setSal(sal);
+		eVO.setComm(comm);
+		eVO.setMail(name + "@githrd.com");
+
+		int cnt = eDao.addEmp(eVO);
+		if (cnt == 1) {
+			JOptionPane.showMessageDialog(null, eVO.getName() + " 이 입사했습니다.");
+		} else {
+			JOptionPane.showMessageDialog(null, eVO.getName() + " 의 입사가 취소되었습니다.");
 		}
+	}
+
 	public static void main(String[] args) {
 		new EmpController();
 	}

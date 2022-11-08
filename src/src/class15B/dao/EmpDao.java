@@ -68,7 +68,7 @@ public class EmpDao {
 		} finally {
 			db.close(rs);
 			db.close(stmt);
-			db.close(con);	// 안닫으면 나중에 열린 커넥션이 많아져서 한계수에 도달
+			db.close(con); // 안닫으면 나중에 열린 커넥션이 많아져서 한계수에 도달
 		}
 		// 7. ArrayList 반환해주고
 		return list;
@@ -85,11 +85,11 @@ public class EmpDao {
 		// 3. 명령전달도구 꺼내오고
 		pstmt = db.getPstmt(con, sql);
 		try {
-		// 4. 질의명령 완성하고
+			// 4. 질의명령 완성하고
 			pstmt.setString(1, name);
-		// 5. 질의명령 보내고 결과받고
+			// 5. 질의명령 보내고 결과받고
 			rs = pstmt.executeQuery();
-		// 6. 결과 꺼내서 VO 에 담고
+			// 6. 결과 꺼내서 VO 에 담고
 			rs.next(); // 레코드포인터 한 행 내리고
 			int mno = rs.getInt("mno");
 			String ename = rs.getString("name");
@@ -100,7 +100,7 @@ public class EmpDao {
 			int comm = rs.getInt("comm");
 			String dname = rs.getString("dname");
 			Date hdate = rs.getDate("hdate");
-			
+
 			eVO.setMno(mno);
 			eVO.setName(ename);
 			eVO.setJob(job);
@@ -112,7 +112,7 @@ public class EmpDao {
 			eVO.setHdate(hdate);
 			eVO.setSdate();
 			// VO 에 받아온 데이터를 채우는 작업이 완료됨.
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(rs);
@@ -122,9 +122,9 @@ public class EmpDao {
 		// 7. VO 반환해주고
 		return eVO;
 	}
-	
+
 	// 부서번호 조회 전담 처리함수
-	public ArrayList<Integer> getDnoList(){
+	public ArrayList<Integer> getDnoList() {
 		// 1. 반환값 변수 만들고
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		// 2. 커넥션 얻어오고
@@ -138,7 +138,7 @@ public class EmpDao {
 			// 6. 질의명령 보내고 결과 받고
 			rs = stmt.executeQuery(sql);
 			// 7. 꺼내서 리스트에 담고
-			while(rs.next()) {
+			while (rs.next()) {
 				int dno = rs.getInt("dno");
 				list.add(dno);
 			}
@@ -149,13 +149,13 @@ public class EmpDao {
 			db.close(stmt);
 			db.close(con);
 		}
-		
+
 		// 8. 리스트 반환해주고
 		return list;
 	}
-	
+
 	// 부서번호를 전달받아서 부서원정보 조회하는 함수
-	public ArrayList<EmpVO> getDnoMemberList(int dno){
+	public ArrayList<EmpVO> getDnoMemberList(int dno) {
 		// 1. 반환값 변수 만들고
 		ArrayList<EmpVO> list = new ArrayList<EmpVO>();
 		// 2. 커넥션 꺼내오고
@@ -169,7 +169,7 @@ public class EmpDao {
 			pstmt.setInt(1, dno); // 첫번째 물음표에 dno 채움
 			// 6. 쿼리 보내고 결과 받고
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				// 7. 반복해서 꺼내서 VO에 담고
 				EmpVO eVO = new EmpVO();
 				int mno = rs.getInt("mno");
@@ -183,7 +183,7 @@ public class EmpDao {
 				// 8. 리스트에 VO 담고
 				list.add(eVO);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(rs);
@@ -193,7 +193,7 @@ public class EmpDao {
 		// 9. 리스트 반환
 		return list;
 	}
-	
+
 	// 사원 정보 추가 함수
 	public int addEmp(EmpVO eVO) {
 		// 0. 반환값 변수 만들기
@@ -205,7 +205,7 @@ public class EmpDao {
 		// 3. 명령 전달 도구 가져오고
 		pstmt = db.getPstmt(con, sql);
 		try {
-		// 4. 쿼리 완성
+			// 4. 쿼리 완성
 			pstmt.setString(1, eVO.getName());
 			pstmt.setString(2, eVO.getJob());
 			pstmt.setString(3, eVO.getSname());
@@ -213,10 +213,10 @@ public class EmpDao {
 			pstmt.setInt(5, eVO.getComm());
 			pstmt.setString(6, eVO.getSname());
 			pstmt.setString(7, eVO.getMail());
-		// 5. 쿼리 보내고 결과 받고
+			// 5. 쿼리 보내고 결과 받고
 			cnt = pstmt.executeUpdate(); // 삽입, 수정, 삭제 쿼리 처리함수
 			// INSERT 쿼리가 성공하면 1, 실패하면 0 반환
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(pstmt);
@@ -225,7 +225,7 @@ public class EmpDao {
 		// 6. 반환값 내보내고
 		return cnt;
 	}
-	
+
 	// 사원이름과 급여를 입력받아서 수정해주는 함수
 	public int editNameSal(String name, int sal) {
 		int cnt = 0;
@@ -236,12 +236,12 @@ public class EmpDao {
 		// 3. 명령문 가져오고
 		pstmt = db.getPstmt(con, sql);
 		try {
-		// 4. 쿼리 완성하고
+			// 4. 쿼리 완성하고
 			pstmt.setInt(1, sal);
 			pstmt.setString(2, name);
-		// 5. 쿼리 보내고 결과 받고
+			// 5. 쿼리 보내고 결과 받고
 			cnt = pstmt.executeUpdate();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(pstmt);
@@ -249,5 +249,45 @@ public class EmpDao {
 		}
 		// 6. 결과 반환해주고
 		return cnt;
+	}
+
+	// 사원이름을 입력받아서 사원번호, 사원이름, 급여, 입사일, 부서번호를 꺼내는 함수
+	public EmpVO getNameLessInfo(String name) {
+		// 0. 반환값 변수 만들고
+		EmpVO eVO = new EmpVO();
+		// 1. 커넥션 얻어오고
+		con = db.getCon("scott", "tiger");
+		// 2. 질의명령 가져오고
+		String sql = eSQL.getSQL(eSQL.SEL_NAME_LESS_INFO);
+		// 3. 명령전달도구 꺼내오고
+		pstmt = db.getPstmt(con, sql);
+		try {
+			// 4. 질의명령 완성하고
+			pstmt.setString(1, name);
+			// 5. 질의명령 보내고 결과받고
+			rs = pstmt.executeQuery();
+			// 6. 결과 꺼내서 VO 에 담고
+			rs.next(); // 레코드포인터 한 행 내리고
+			int mno = rs.getInt("mno");
+			String ename = rs.getString("name");
+			int sal = rs.getInt("sal");
+			Date hdate = rs.getDate("hdate");
+			int dno = rs.getInt("dno");
+
+			eVO.setMno(mno);
+			eVO.setName(ename);
+			eVO.setSal(sal);
+			eVO.setHdate(hdate);
+			eVO.setDno(dno);
+			// VO 에 받아온 데이터를 채우는 작업이 완료됨.
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 7. VO 반환해주고
+		return eVO;
 	}
 }

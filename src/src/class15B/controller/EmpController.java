@@ -30,6 +30,7 @@ public class EmpController {
 						+ "\n3. 사원 정보 입력"
 						+ "\n4. 사원 급여 수정" 
 						+ "\n5. 사원이름으로 간단 정보 조회"
+						+ "\n6. 사원번호로 급여 수정"
 						+ "\n# 번호를 입력하세요" 
 						+ "\n종료하려면 q를 입력하세요");
 			if (sno.equals("q")) {
@@ -63,7 +64,7 @@ public class EmpController {
 			case "4":
 				editNameSal();
 				break;
-			case "5":
+			case "5":	// HW
 				while (true) {
 					// 회원 이름 리스트 조회
 					printNameList();
@@ -81,6 +82,9 @@ public class EmpController {
 					printNameLessInfo(name);
 				}
 				break;
+			case "6":	// HW
+				editMnoSal();
+				break;
 			}
 		}
 	}
@@ -90,6 +94,18 @@ public class EmpController {
 		String name = JOptionPane.showInputDialog("이름입력");
 		int sal = Integer.parseInt(JOptionPane.showInputDialog("수정급여"));
 		int cnt = eDao.editNameSal(name, sal);
+		if (cnt == 0) {
+			JOptionPane.showMessageDialog(null, "급여 수정에 실패했습니다");
+		} else {
+			JOptionPane.showMessageDialog(null, cnt + "명의 급여를 수정했습니다.");
+		}
+	}
+	
+	// HW 사원번호로 급여 수정
+	public void editMnoSal() {
+		int mno = Integer.parseInt(JOptionPane.showInputDialog("사원번호입력"));
+		int sal = Integer.parseInt(JOptionPane.showInputDialog("수정급여"));
+		int cnt = eDao.editMnoSal(mno, sal);
 		if (cnt == 0) {
 			JOptionPane.showMessageDialog(null, "급여 수정에 실패했습니다");
 		} else {
@@ -168,6 +184,7 @@ public class EmpController {
 		System.out.println("급    여: " + sal);
 		System.out.println("입 사 일: " + sdate);
 		System.out.println("부서번호: " + dno);
+		System.out.println();
 	}
 
 	// 사원이름 리스트 조회해서 출력해주는 함수

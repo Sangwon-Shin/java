@@ -250,6 +250,31 @@ public class EmpDao {
 		// 6. 결과 반환해주고
 		return cnt;
 	}
+	
+	// HW 사원번호와 급여를 입력받아서 수정해주는 함수
+	public int editMnoSal(int mno, int sal) {
+		int cnt = 0;
+		// 1. 커넥션 가져오고
+		con = db.getCon("scott", "tiger");
+		// 2. 쿼리 가져오고
+		String sql = eSQL.getSQL(eSQL.EDIT_MNO_SAL);
+		// 3. 명령문 가져오고
+		pstmt = db.getPstmt(con, sql);
+		try {
+			// 4. 쿼리 완성하고
+			pstmt.setInt(1, sal);
+			pstmt.setInt(2, mno);
+			// 5. 쿼리 보내고 결과 받고
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 6. 결과 반환해주고
+		return cnt;
+	}
 
 	// 사원이름을 입력받아서 사원번호, 사원이름, 급여, 입사일, 부서번호를 꺼내는 함수
 	public EmpVO getNameLessInfo(String name) {

@@ -8,6 +8,7 @@ public class EmpSQL {
 	public final int SEL_NAME_LESS_INFO		=		1005;
 	
 	public final int EDIT_ENO_SAL			=		2001;
+	public final int EDIT_MNO_SAL			=		2002;
 	
 	public final int ADD_EMP				=		3001;
 	
@@ -78,6 +79,14 @@ public class EmpSQL {
 			buff.append("	emp1 ");
 			buff.append("WHERE ");
 			buff.append("	ename = ? ");
+			break;
+		case EDIT_MNO_SAL:
+			buff.append("UPDATE ");
+			buff.append("	emp1 ");
+			buff.append("SET ");
+			buff.append("	sal = ? ");
+			buff.append("WHERE ");
+			buff.append("	empno = ? ");
 			break;
 		}
 		

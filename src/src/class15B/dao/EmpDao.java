@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import java.sql.*;
 import class15B.sql.*;
+import class15B.util.PageUtil;
 import class15B.vo.*;
 import class15B.db.*;
 
@@ -250,7 +251,7 @@ public class EmpDao {
 		// 6. 결과 반환해주고
 		return cnt;
 	}
-	
+
 	// HW 사원번호와 급여를 입력받아서 수정해주는 함수
 	public int editMnoSal(int mno, int sal) {
 		int cnt = 0;
@@ -314,5 +315,78 @@ public class EmpDao {
 		}
 		// 7. VO 반환해주고
 		return eVO;
+	}
+
+	// 총 사원수 조회 함수
+	public int getTotal() {
+		// 할 일
+		// 1. 반환값 변수 설정
+		int cnt = 0;
+		// 2. 커넥션 꺼내오고
+		con = db.getCon("scott", "tiger");
+		// 3. 쿼리 가져오고
+		String sql = eSQL.getSQL(eSQL.SEL_TOTAL);
+		// 4. 명령전달도구 준비하고
+		stmt = db.getStmt(con);
+		try {
+			// 5. 쿼리 완성(불필요)
+			// 6. 쿼리 전달하고 결과 받고
+			rs = stmt.executeQuery(sql);
+			// 7. 데이터 꺼내고
+			rs.next();
+			cnt = rs.getInt("cnt");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(stmt);
+			db.close(con);
+		}
+		// 8. 반환
+		return cnt;
+	}
+
+	// 사원리스트 조회 전담 처리함수
+	public ArrayList<EmpVO> getEmpList(PageUtil page) {
+		// 1. 반환값 변수
+		ArrayList<EmpVO> list = new ArrayList<EmpVO>();
+		// 2. 커넥션 꺼내오고
+		con = db.getCon("scott", "tiger");
+		// 3. 쿼리 가져오고
+		String sql = eSQL.getSQL(eSQL.SEL_EMP_LIST);
+		// 4. 명령전달도구 준비
+		pstmt = db.getPstmt(con, sql);
+		try {
+			// 5. 쿼리 완성
+			pstmt.setInt(1, page.getStartRno());
+			pstmt.setInt(2, page.getEndRno());
+			// 6. 쿼리 보내고 결과 받고
+			rs = pstmt.executeQuery();
+			// 7. 결과 꺼내서 VO에 담고
+			while(rs.next()) {
+				EmpVO eVO = new EmpVO();
+			// 8. List 에 VO 담고
+				//int rno = rs.getInt("rno");
+				int mno = rs.getInt("mno");
+				int dno = rs.getInt("dno");
+				String name = rs.getString("name");
+				Date hdate = rs.getDate("hdate");
+				eVO.setMno(mno);
+				eVO.setDno(dno);
+				eVO.setName(name);
+				eVO.setHdate(hdate);
+				eVO.setSdate();
+				list.add(eVO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+
+		// 9. 리스트 반환해주고
+		return list;
 	}
 }

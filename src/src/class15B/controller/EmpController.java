@@ -43,7 +43,7 @@ public class EmpController {
 					printNameList();
 					System.out.println();
 					// 조회할 사원이름 입력받고
-					String name = JOptionPane.showInputDialog("조회할 사원이름\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
+					String name = JOptionPane.showInputDialog("조회할 사원이름을 입력하세요.\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
 							.toLowerCase();
 					if (name.equals("up")) {
 						break;
@@ -149,7 +149,7 @@ public class EmpController {
 
 	// 사원이름을 입력받아서 사원의 정보를 출력해주는 함수
 	public void printNameInfo(String name) {
-		EmpVO eVO = eDao.getNameInfo(name.toUpperCase());
+		EmpVO eVO = eDao.getNameInfo(name);
 		String ename = eVO.getName();
 		int mno = eVO.getMno();
 		String job = eVO.getJob();

@@ -1,9 +1,9 @@
 package personal_project;
 
-import javax.swing.*;
-import javax.swing.event.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class sqlEditor {
+public class sqlEditor extends Application{
 
 	public sqlEditor() {
 		
@@ -11,6 +11,12 @@ public class sqlEditor {
 
 	public static void main(String[] args) {
 		new sqlEditor();
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

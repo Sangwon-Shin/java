@@ -1,5 +1,5 @@
 /*
-	사원들의 데이터베이스 작업을 컨트롤할 컨트롤러 클래스
+	사원들의 데이터베이스 작업 컨트롤러 클래스
  */
 package class15B.controller;
 
@@ -16,11 +16,6 @@ public class EmpController {
 	public EmpController() {
 		eDao = new EmpDao();
 		mainWin();
-		/*
-		 * // 회원 이름 리스트 조회 printNameList(); // 조회할 사원이름 입력받고 String name =
-		 * JOptionPane.showInputDialog("조회할 사원이름").toUpperCase(); // 이름으로 사원정보 조회
-		 * printNameInfo(name);
-		 */
 	}
 
 	public void mainWin() {
@@ -43,8 +38,9 @@ public class EmpController {
 					printNameList();
 					System.out.println();
 					// 조회할 사원이름 입력받고
-					String name = JOptionPane.showInputDialog("조회할 사원이름을 입력하세요.\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
-							.toLowerCase();
+					String name = JOptionPane.showInputDialog("조회할 사원이름을 입력하세요.\n"+
+                    "이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요").toLowerCase();
+                    
 					if (name.equals("up")) {
 						break;
 					} else if (name.equals("q")) {
@@ -70,8 +66,9 @@ public class EmpController {
 					printNameList();
 					System.out.println();
 					// 조회할 사원이름 입력받고
-					String name = JOptionPane.showInputDialog("조회할 사원이름\n이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요")
-							.toLowerCase();
+					String name = JOptionPane.showInputDialog("조회할 사원이름\n"
+                        + "이전단계로 이동하려면 up을 입력하세요\n종료하려면 q를 입력하세요").toLowerCase();
+                        
 					if (name.equals("up")) {
 						break;
 					} else if (name.equals("q")) {
@@ -126,8 +123,8 @@ public class EmpController {
 			System.out.println();
 
 			// 부서번호 입력받기
-			String sno = JOptionPane.showInputDialog("부서번호를 입력하세요\n이전단계로 이동하려면 up을 입력하세요\n프로그램을 종료하려면 q를 입력하세요")
-					.toLowerCase();
+			String sno = JOptionPane.showInputDialog("부서번호를 입력하세요\n이전단계로"+
+            "이동하려면 up을 입력하세요\n프로그램을 종료하려면 q를 입력하세요").toLowerCase();
 			if (sno.equals("up")) {
 				break;
 			} else if (sno.equals("q")) {
@@ -141,8 +138,8 @@ public class EmpController {
 			// 부서원 출력
 			System.out.println("========" + dno + " 번 부서 ========");
 			for (EmpVO vo : list) {
-				System.out.printf("사원번호: %8d\n이름:%13s\n직급: %12s\n급여: %12d\n\n", vo.getMno(), vo.getName(), vo.getJob(),
-						vo.getSal());
+				System.out.printf("사원번호: %8d\n이름:%13s\n직급: %12s\n급여: %12d\n\n",
+                 vo.getMno(), vo.getName(), vo.getJob(), vo.getSal());
 			}
 		}
 	}
